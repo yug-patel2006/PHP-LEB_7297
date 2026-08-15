@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>5.5 Fetch DB data with AJAX</title></head>
+<body>
+<h3>5.5 Fetch information from a database with AJAX</h3>
+<button onclick="loadStudents()">Load Students</button>
+<table id="studentsTable" border="1" cellpadding="6" style="margin-top:15px; display:none;">
+    <thead><tr><th>ID</th><th>Name</th><th>Course</th><th>Marks</th></tr></thead>
+    <tbody></tbody>
+</table>
+
+<script>
+function loadStudents() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "5.5_fetch_db.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var students = JSON.parse(xhr.responseText);
+            var tbody = document.querySelector("#studentsTable tbody");
+            tbody.innerHTML = "";
+            students.forEach(function(s) {
+                tbody.innerHTML += "<tr><td>" + s.id + "</td><td>" + s.name + "</td><td>" + s.course + "</td><td>" + s.marks + "</td></tr>";
+            });
+            document.getElementById("studentsTable").style.display = "table";
+        }
+    };
+    xhr.send();
+}
+</script>
+</body>
+</html>
