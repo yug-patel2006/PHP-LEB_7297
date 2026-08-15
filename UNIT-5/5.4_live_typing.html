@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>5.4 Live Typing AJAX</title></head>
+<body>
+<h3>5.4 Web page communicates with server as user types</h3>
+<input type="text" id="liveInput" onkeyup="sendData(this.value)" placeholder="Start typing...">
+<div id="output" style="margin-top:15px; border:1px solid #ccc; padding:10px;"></div>
+
+<script>
+function sendData(value) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "5.4_server_check.php?q=" + encodeURIComponent(value), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("output").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+</script>
+</body>
+</html>
