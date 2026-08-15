@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>5.2 XMLHttpRequest with Callback</title></head>
+<body>
+<h3>5.2 XMLHttpRequest with a callback function</h3>
+<button onclick="fetchData(displayResult)">Load Data (with callback)</button>
+<div id="output" style="margin-top:15px; border:1px solid #ccc; padding:10px;"></div>
+
+<script>
+function fetchData(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.txt", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            callback(xhr.responseText); // callback function invoked here
+        }
+    };
+    xhr.send();
+}
+
+function displayResult(text) {
+    document.getElementById("output").innerHTML = "<b>Callback received:</b><br>" + text;
+}
+</script>
+</body>
+</html>

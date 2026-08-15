@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>5.1 Simple XMLHttpRequest</title></head>
+<body>
+<h3>5.1 Simple XMLHttpRequest - retrieve data from a TXT file</h3>
+<button onclick="loadData()">Load Data</button>
+<div id="output" style="margin-top:15px; border:1px solid #ccc; padding:10px;"></div>
+
+<script>
+function loadData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.txt", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("output").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+</script>
+</body>
+</html>
