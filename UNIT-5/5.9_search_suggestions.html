@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>5.9 Search Suggestions with jQuery</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<h3>5.9 Search suggestions using jQuery AJAX</h3>
+<input type="text" id="searchBox" placeholder="Type a technology name...">
+<ul id="suggestions"></ul>
+
+<script>
+$(document).ready(function() {
+    $("#searchBox").on("keyup", function() {
+        var term = $(this).val();
+        if (term.length === 0) {
+            $("#suggestions").empty();
+            return;
+        }
+        $.ajax({
+            url: "5.9_search_data.php",
+            method: "GET",
+            data: { term: term },
+            dataType: "json",
+            success: function(data) {
+                $("#suggestions").empty();
+                data.forEach(function(item) {
+                    $("#suggestions").append("<li>" + item + "</li>");
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
