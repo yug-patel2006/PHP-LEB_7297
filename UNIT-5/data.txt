@@ -1,0 +1,2 @@
+Hello! This text is being fetched using XMLHttpRequest (AJAX) from data.txt.
+This demonstrates basic AJAX data retrieval without page reload.
