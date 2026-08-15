@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>5.10 Navigation Menu with jQuery AJAX</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+  nav a { margin-right: 15px; cursor: pointer; text-decoration: underline; color: blue; }
+  #content { margin-top: 20px; border: 1px solid #ccc; padding: 15px; min-height: 100px; }
+</style>
+</head>
+<body>
+<h3>5.10 Dynamic navigation menu using jQuery and AJAX</h3>
+<nav>
+    <a class="nav-link" data-section="home">Home</a>
+    <a class="nav-link" data-section="blog">Blog</a>
+    <a class="nav-link" data-section="products">Products</a>
+    <a class="nav-link" data-section="contact">Contact</a>
+</nav>
+<div id="content">Click a menu item to load its content dynamically.</div>
+
+<script>
+$(document).ready(function() {
+    $(".nav-link").click(function() {
+        var section = $(this).data("section");
+        $.ajax({
+            url: "5.10_content_blog.php",
+            method: "GET",
+            data: { section: section },
+            success: function(response) {
+                $("#content").html(response);
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
