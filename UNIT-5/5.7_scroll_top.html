@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>5.7 Scroll to Top with jQuery</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+  body { height: 2500px; font-family: Arial, sans-serif; }
+  #scrollTopBtn {
+    position: fixed; bottom: 30px; right: 30px;
+    padding: 12px 18px; display: none; cursor: pointer;
+    background: #333; color: #fff; border: none; border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+<h3>5.7 Scroll to top using jQuery</h3>
+<p>Scroll down to see the "Back to Top" button appear.</p>
+
+<button id="scrollTopBtn">Back to Top</button>
+
+<script>
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+            $("#scrollTopBtn").fadeIn();
+        } else {
+            $("#scrollTopBtn").fadeOut();
+        }
+    });
+
+    $("#scrollTopBtn").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, 600);
+    });
+});
+</script>
+</body>
+</html>

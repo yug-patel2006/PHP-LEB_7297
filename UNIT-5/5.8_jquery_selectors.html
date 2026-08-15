@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>5.8 jQuery Selectors and Styles</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<h3>5.8 jQuery Selectors, Methods and Styles</h3>
+<p class="text">This is a paragraph with class 'text'.</p>
+<h4 id="heading">This is a heading with id 'heading'.</h4>
+<button class="btn">Button 1</button>
+<button class="btn">Button 2</button>
+
+<br><br>
+<button onclick="applyStyles()">Apply Red Background</button>
+
+<script>
+function applyStyles() {
+    $("p.text").css("background-color", "red");
+    $("#heading").css("background-color", "red");
+    $(".btn").css("background-color", "red").css("color", "white");
+}
+</script>
+</body>
+</html>
